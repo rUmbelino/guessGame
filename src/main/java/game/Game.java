@@ -1,87 +1,102 @@
 package game;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
+import models.dataStructure.Node;
 import models.game.Guess;
-import models.io.console.Console;
 import models.message.FoodMessage;
 import models.message.Message;
 import models.userInterface.UserInterface;
+import models.userInterface.console.Console;
 
 public class Game {
 	private Message message;
-	private UserInterface io;
-	private LinkedList<Guess> list;
+	private Node<Guess> root;
+	private UserInterface userInterface;
 
-	public Game(Message message, UserInterface output, LinkedList<Guess> list) {
+	public Game(Message message, UserInterface userInterface, Node<Guess> root) {
+		this.root = root;
 		this.message = message;
-		this.io = output;
-		this.list = list;
+		this.userInterface = userInterface;
 	}
 
-	public static Game buildSysoutFoodGame() {
-		LinkedList<Guess> list = new LinkedList<Guess>();
-		list.add(new Guess("bolo de chocolate", "feito de chocolate"));
-		list.add(new Guess("lasanha", "massa"));
+	public static Game buildConsoleFoodGame() {
+		Guess cake = new Guess("bolo de chocolate", "feito de chocolate");
+		Guess lasagna = new Guess("lasanha", "massa");
 
-		return new Game(new FoodMessage(), new Console(), list);
+		Node<Guess> root = new Node<>(lasagna);
+		Node<Guess> leftNode = new Node<>(cake);
+		root.setLeft(leftNode);
+
+		return new Game(new FoodMessage(), new Console(), root);
 	}
 
-	public void start() {
+	public Node<Guess> getRoot() {
+		return this.root;
+	}
+
+	public void start(Boolean isInfinity) {
+		do {
+			this.userInterface.print(this.message.getGreeting());
+
+			this.findGuess(this.root);
+		} while (isInfinity);
+	}
+
+	private void findGuess(Node<Guess> currentNode) {
+		Guess guess = currentNode.getValue();
+
+		String hunchMessage = this.message.getHunch(guess);
+		Boolean isCorrectHunch = this.userInterface.validate(hunchMessage);
+
+		if (!isCorrectHunch) {
+			this.validateStopCondition(currentNode, isCorrectHunch);
+			return;
+		}
+
+		String guessMessage = this.message.getGuess(guess);
+		Boolean hasDiscovered = this.userInterface.validate(guessMessage);
+
+		if (hasDiscovered) {
+			this.showSuccessMessage();
+		} else {
+			this.validateStopCondition(currentNode, isCorrectHunch);
+		}
+	}
+
+	private void validateStopCondition(Node<Guess> node, Boolean isCorrectHunch) {
 		try {
-			while (true) {
-				this.io.print(this.message.getGreeting());
-
-				Boolean isRegistered = this.hasItemRegistered();
-				if (!isRegistered) {
-					this.askAwnser();
-				}
-			}
+			Node<Guess> nextNode = isCorrectHunch ? node.getLeft() : node.getRight();
+			this.findGuess(nextNode);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Node<Guess> userNode = this.askAwnser(node);
+
+			if (isCorrectHunch) {
+				node.setLeft(userNode);
+			} else {
+				node.setRight(userNode);
+			}
 		}
 
 	}
 
-	public Boolean hasItemRegistered() {
-		Iterator<Guess> iterator = this.list.iterator();
+	private Node<Guess> askAwnser(Node<Guess> node) {
+		Guess userGuess = new Guess();
 
-		Boolean hasDiscovered = false;
-		while (iterator.hasNext()) {
-			Guess currentItem = iterator.next();
-			String hunchMessage = this.message.getHunch(currentItem);
-			Boolean isCorrectHunch = this.io.validate(hunchMessage);
+		this.userInterface.print(this.message.getMissName());
+		String name = this.userInterface.read();
+		userGuess.setName(name);
 
-			if (!isCorrectHunch) {
-				continue;
-			}
+		this.userInterface.print(this.message.getMissCharacteristic(userGuess, node.getValue()));
+		String characteristic = this.userInterface.read();
+		userGuess.setCharachteristic(characteristic);
 
-			String guessMessage = this.message.getGuess(currentItem);
-			hasDiscovered = this.io.validate(guessMessage);
+		Node<Guess> userNode = new Node<>(userGuess);
 
-			if (hasDiscovered) {
-				this.io.print(this.message.getHit());
-				break;
-			}
-		}
-
-		return hasDiscovered;
+		return userNode;
 	}
 
-	public void askAwnser() {
-		Guess itemA = this.list.getLast();
-		Guess itemB = new Guess();
-
-		this.io.print(this.message.getMissName());
-		String name = this.io.read();
-		itemB.setName(name);
-
-		this.io.print(this.message.getMissCharacteristic(itemA, itemB));
-		String characteristic = this.io.read();
-
-		Guess userGuess = new Guess(name, characteristic);
-		this.list.add(userGuess);
+	private void showSuccessMessage() {
+		String successMessage = this.message.getHit();
+		this.userInterface.print(successMessage);
 	}
 
 }

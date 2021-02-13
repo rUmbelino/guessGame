@@ -1,4 +1,4 @@
-package models.io.console;
+package models.userInterface.console;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Console implements UserInterface {
 	@Override
 	public String read() {
 		Scanner scanner = new Scanner(System.in);
-		String message = scanner.next();
+		String message = scanner.nextLine();
 
 		return message;
 	}

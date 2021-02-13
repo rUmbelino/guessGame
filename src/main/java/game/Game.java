@@ -4,17 +4,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import models.game.Guess;
-import models.io.IOInterface;
 import models.io.console.Console;
 import models.message.FoodMessage;
 import models.message.Message;
+import models.userInterface.UserInterface;
 
 public class Game {
 	private Message message;
-	private IOInterface io;
+	private UserInterface io;
 	private LinkedList<Guess> list;
 
-	public Game(Message message, IOInterface output, LinkedList<Guess> list) {
+	public Game(Message message, UserInterface output, LinkedList<Guess> list) {
 		this.message = message;
 		this.io = output;
 		this.list = list;

@@ -11,12 +11,12 @@ public class FoodMessage implements Message{
 
 	@Override
 	public String getHunch(Guess item) {
-		return  String.format("O prato que pensou È %s?", item.getCharachteristic());
+		return  String.format("O prato que pensou √© %s?", item.getCharachteristic());
 	}
 	
 	@Override
 	public String getGuess(Guess item) {
-		return  String.format("O prato que pensou È %s?", item.getName());
+		return  String.format("O prato que pensou √© %s?", item.getName());
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class FoodMessage implements Message{
 
 	@Override
 	public String getMissCharacteristic(Guess itemA, Guess itemB) {
-		return String.format("%s È ____ mas %s n„o.", itemA.getName(), itemB.getName());
+		return String.format("%s √© ____ mas %s n√£o.", itemA.getName(), itemB.getName());
 	}
 
 

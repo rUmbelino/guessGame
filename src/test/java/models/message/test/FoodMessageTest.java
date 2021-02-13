@@ -1,7 +1,6 @@
 package models.message.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import models.game.Guess;
@@ -21,7 +20,7 @@ public class FoodMessageTest {
 	public void shouldHaveProperHunch() {
 		FoodMessage foodMessage = new FoodMessage();
 		Guess bolo = new Guess("bolo", "chocolate");
-		String hunch = String.format("O prato que pensou é %s?", bolo.getCharachteristic());
+		String hunch = String.format("O prato que pensou ï¿½ %s?", bolo.getCharachteristic());
 
 		assertEquals(hunch, foodMessage.getHunch(bolo));
 	}
@@ -30,7 +29,7 @@ public class FoodMessageTest {
 	public void shouldHaveProperGuess() {
 		FoodMessage foodMessage = new FoodMessage();
 		Guess bolo = new Guess("bolo", "chocolate");
-		String guess = String.format("O prato que pensou é %s?", bolo.getName());
+		String guess = String.format("O prato que pensou ï¿½ %s?", bolo.getName());
 		
 		assertEquals(guess, foodMessage.getGuess(bolo));
 	}
@@ -57,7 +56,7 @@ public class FoodMessageTest {
 		Guess bolo = new Guess("bolo", "chocolate");
 		Guess banana = new Guess("banana", "fruta");
 		
-		String characteristic = "bolo é ____ mas banana não.";
+		String characteristic = "bolo Ã© ____ mas banana nÃ£o.";
 		
 		assertEquals(characteristic, foodMessage.getMissCharacteristic(bolo, banana));
 	}

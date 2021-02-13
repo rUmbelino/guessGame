@@ -2,9 +2,9 @@ package models.io.console;
 
 import java.util.Scanner;
 
-import models.io.IOInterface;
+import models.userInterface.UserInterface;
 
-public class Console implements IOInterface {
+public class Console implements UserInterface {
 
 	@Override
 	public void print(String message) {

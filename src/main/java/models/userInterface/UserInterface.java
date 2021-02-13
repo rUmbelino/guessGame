@@ -1,6 +1,6 @@
-package models.io;
+package models.userInterface;
 
-public interface IOInterface {
+public interface UserInterface {
 	
 	public abstract String read();
 	

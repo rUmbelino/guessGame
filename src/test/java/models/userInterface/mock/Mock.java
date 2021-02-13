@@ -18,7 +18,6 @@ public class Mock implements UserInterface {
 
 	@Override
 	public void print(String message) {
-		System.out.println(message);
 	}
 
 	@Override

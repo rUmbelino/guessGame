@@ -2,6 +2,7 @@ package game.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void shouldHaveACorrectMockGame() {
+	public void shouldHaveACorrectMockGameWithouInserting() {
 		Map<String, Boolean> validateAwnsers = new HashMap<>();
 		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
 		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), true);
@@ -57,9 +58,10 @@ public class GameTest {
 
 		Node<Guess> rootNode = game.getRoot();
 
+		assertNull(rootNode.getRight());
 		assertNotNull(rootNode.getValue());
 		assertNotNull(rootNode.getLeft());
-		assertNotNull(rootNode.getRight());
+		assertNotNull(rootNode.getLeft().getLeft());
 	}
 
 	@Test

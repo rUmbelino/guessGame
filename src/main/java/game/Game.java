@@ -64,15 +64,15 @@ public class Game {
 
 	private void validateStopCondition(Node<Guess> node, Boolean isCorrectHunch) {
 		try {
-			Node<Guess> nextNode = isCorrectHunch ? node.getLeft() : node.getRight();
+			Node<Guess> nextNode = isCorrectHunch ? node.getRight() : node.getLeft();
 			this.findGuess(nextNode);
 		} catch (Exception e) {
 			Node<Guess> userNode = this.askAwnser(node);
 
 			if (isCorrectHunch) {
-				node.setLeft(userNode);
-			} else {
 				node.setRight(userNode);
+			} else {
+				node.setLeft(userNode);
 			}
 		}
 

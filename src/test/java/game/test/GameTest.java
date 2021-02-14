@@ -2,7 +2,6 @@ package game.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +18,7 @@ public class GameTest {
 	private FoodMessage foodMessage = new FoodMessage();
 	private Guess cake = new Guess("bolo de chocolate", "feito de chocolate");
 	private Guess lasagna = new Guess("lasanha", "massa");
+	private Guess pizza = new Guess("pizza", "italiano");
 
 	private Game buildMockGame(Map<String, Boolean> validateAwnsers) {
 		Node<Guess> root = new Node<>(this.lasagna);
@@ -28,42 +28,52 @@ public class GameTest {
 		return new Game(this.foodMessage, new Mock(validateAwnsers), root);
 	}
 
+	private Game buildMockGame(Map<String, Boolean> validateAwnsers, Map<String, String> readAwnsers) {
+		Node<Guess> root = new Node<>(this.lasagna);
+		Node<Guess> leftNode = new Node<>(this.cake);
+		root.setLeft(leftNode);
+
+		return new Game(this.foodMessage, new Mock(validateAwnsers, readAwnsers), root);
+	}
+
 	@Test
 	public void shouldHaveACorrectMockGameWithouInserting() {
 		Map<String, Boolean> validateAwnsers = new HashMap<>();
 		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
 		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), true);
-		validateAwnsers.put(this.foodMessage.getPlayAgain(), false);
 
 		Game game = this.buildMockGame(validateAwnsers);
 
-		game.start();
+		game.start(false);
 
 		Node<Guess> rootNode = game.getRoot();
 
-		assertNotNull(rootNode.getValue());
-		assertNotNull(rootNode.getLeft());
 		assertEquals(rootNode.getRight(), null);
+		assertEquals(rootNode.getLeft().getLeft(), null);
+		assertEquals(rootNode.getLeft().getRight(), null);
 	}
 
 	@Test
 	public void shouldHaveACorrectMockGameInsertingInRight() {
-		Map<String, Boolean> awnsers = new HashMap<>();
+		Map<String, Boolean> validateAwnsers = new HashMap<>();
+		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
+		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), false);
 
-		awnsers.put(this.foodMessage.getHunch(this.lasagna), false);
-		awnsers.put(this.foodMessage.getHunch(this.cake), false);
-		awnsers.put(this.foodMessage.getPlayAgain(), false);
+		Map<String, String> readAwnsers = new HashMap<>();
+		readAwnsers.put(this.foodMessage.getMissName(), this.pizza.getName());
+		readAwnsers.put(this.foodMessage.getMissCharacteristic(this.pizza, this.lasagna),
+				this.pizza.getCharachteristic());
 
-		Game game = this.buildMockGame(awnsers);
+		Game game = this.buildMockGame(validateAwnsers, readAwnsers);
 
-		game.start();
+		game.start(false);
 
 		Node<Guess> rootNode = game.getRoot();
 
-		assertNull(rootNode.getRight());
-		assertNotNull(rootNode.getValue());
-		assertNotNull(rootNode.getLeft());
-		assertNotNull(rootNode.getLeft().getLeft());
+		Guess inserted =rootNode.getRight().getValue();
+		
+		assertEquals(inserted.getName(), this.pizza.getName());
+		assertEquals(inserted.getCharachteristic(), this.pizza.getCharachteristic());
 	}
 
 	@Test

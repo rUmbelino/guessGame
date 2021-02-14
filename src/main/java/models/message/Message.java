@@ -4,8 +4,6 @@ import models.game.Guess;
 
 public interface Message {
 
-	public abstract String getPlayAgain();
-	
 	public abstract String getGreeting();
 
 	public abstract String getHunch(Guess item);

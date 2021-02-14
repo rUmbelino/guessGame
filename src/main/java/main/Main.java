@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Game game = Game.buildSwingFoodGame();
-		game.start();
+		game.start(true);
 
 	}
 }

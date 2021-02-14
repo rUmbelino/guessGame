@@ -6,14 +6,20 @@ import models.userInterface.UserInterface;
 
 public class Mock implements UserInterface {
 	Map<String, Boolean> validateAwnsers;
+	Map<String, String> readAwnsers;
 
 	public Mock(Map<String, Boolean> validateAwnsers) {
 		this.validateAwnsers = validateAwnsers;
 	}
 
+	public Mock(Map<String, Boolean> validateAwnsers, Map<String, String> readAwnsers) {
+		this.readAwnsers = readAwnsers;
+		this.validateAwnsers = validateAwnsers;
+	}
+
 	@Override
 	public String read(String message) {
-		return null;
+		return this.readAwnsers.get(message);
 	}
 
 	@Override

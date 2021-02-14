@@ -42,13 +42,11 @@ public class Game extends GuessDecisionTree {
 		return this.root;
 	}
 
-	public void start() {
-		boolean shouldPlainAgain = false;
+	public void start(boolean isInfinityGame) {
 		do {
+			this.userInterface.print(this.message.getGreeting());
 			this.findGuess(this.root);
-
-			shouldPlainAgain = this.userInterface.validate(this.message.getPlayAgain());
-		} while (shouldPlainAgain);
+		} while (isInfinityGame);
 	}
 
 }

@@ -17,13 +17,17 @@ public class Swing extends JFrame implements UserInterface {
 
 	@Override
 	public String read(String message) {
-		return JOptionPane.showInputDialog(message);
+		String input = JOptionPane.showInputDialog(message);
+		int userInputCode = input == null ? -1 : 1;
+		validateCloseEvent(userInputCode);
+		return input;
 	}
 
 	@Override
 	public void print(String message) {
-		JOptionPane.showConfirmDialog(this.frame, message, this.GAME_NAME, JOptionPane.DEFAULT_OPTION,
+		int input = JOptionPane.showConfirmDialog(this.frame, message, this.GAME_NAME, JOptionPane.DEFAULT_OPTION,
 				JOptionPane.INFORMATION_MESSAGE);
+		validateCloseEvent(input);
 	}
 
 	@Override
@@ -34,6 +38,13 @@ public class Swing extends JFrame implements UserInterface {
 		int input = JOptionPane.showOptionDialog(frame, message, GAME_NAME, JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
+		validateCloseEvent(input);
 		return input == 0;
+	}
+
+	private void validateCloseEvent(int input) {
+		if (input == -1) {
+			System.exit(0);
+		}
 	}
 }

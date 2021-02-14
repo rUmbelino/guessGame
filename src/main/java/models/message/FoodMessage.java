@@ -34,10 +34,4 @@ public class FoodMessage implements Message{
 		return String.format("%s é ____ mas %s não.", itemA.getName(), itemB.getName());
 	}
 
-	@Override
-	public String getPlayAgain() {
-		return "Jogar novamente?";
-	}
-
-
 }

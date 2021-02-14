@@ -16,8 +16,6 @@ public abstract class GuessDecisionTree {
 	}
 
 	public void findGuess(Node<Guess> currentNode) {
-		this.userInterface.print(this.message.getGreeting());
-
 		Guess guess = currentNode.getValue();
 
 		String hunchMessage = this.message.getHunch(guess);

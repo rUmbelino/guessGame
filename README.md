@@ -5,7 +5,7 @@ When its not possible to find out, the user is asked to inform about the name an
 The game was developed using a [decision tree](https://en.wikipedia.org/wiki/Decision_tree) in java.
 
 # Requirements
-Have Java 8 installed on the machine with the [JAVA_HOME](https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html) enviroment variable configured.
+Have Java Runtime Enviroment 1.8 installed on the machine with the [JAVA_HOME](https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html) enviroment variable configured.
 
 # Overview
 

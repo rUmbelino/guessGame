@@ -45,15 +45,18 @@ public class Game {
 		return this.root;
 	}
 
-	public void start(Boolean isInfinity) {
+	public void start() {
+		boolean shouldPlainAgain = false;
 		do {
-			this.userInterface.print(this.message.getGreeting());
-
 			this.findGuess(this.root);
-		} while (isInfinity);
+
+			shouldPlainAgain = this.userInterface.validate(this.message.getPlayAgain());
+		} while (shouldPlainAgain);
 	}
 
 	private void findGuess(Node<Guess> currentNode) {
+		this.userInterface.print(this.message.getGreeting());
+
 		Guess guess = currentNode.getValue();
 
 		String hunchMessage = this.message.getHunch(guess);

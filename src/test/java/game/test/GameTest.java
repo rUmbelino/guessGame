@@ -33,10 +33,11 @@ public class GameTest {
 		Map<String, Boolean> validateAwnsers = new HashMap<>();
 		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
 		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), true);
+		validateAwnsers.put(this.foodMessage.getPlayAgain(), false);
 
 		Game game = this.buildMockGame(validateAwnsers);
 
-		game.start(false);
+		game.start();
 
 		Node<Guess> rootNode = game.getRoot();
 
@@ -51,10 +52,11 @@ public class GameTest {
 
 		awnsers.put(this.foodMessage.getHunch(this.lasagna), false);
 		awnsers.put(this.foodMessage.getHunch(this.cake), false);
+		awnsers.put(this.foodMessage.getPlayAgain(), false);
 
 		Game game = this.buildMockGame(awnsers);
 
-		game.start(false);
+		game.start();
 
 		Node<Guess> rootNode = game.getRoot();
 
@@ -74,13 +76,13 @@ public class GameTest {
 		assertNotNull(rootNode.getLeft());
 		assertEquals(rootNode.getRight(), null);
 	}
-	
+
 	@Test
 	public void shouldProperlyBuildSwingGame() {
 		Game game = Game.buildSwingFoodGame();
-		
+
 		Node<Guess> rootNode = game.getRoot();
-		
+
 		assertNotNull(rootNode.getValue());
 		assertNotNull(rootNode.getLeft());
 		assertEquals(rootNode.getRight(), null);

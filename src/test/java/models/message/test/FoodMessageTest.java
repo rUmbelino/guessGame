@@ -60,4 +60,12 @@ public class FoodMessageTest {
 		
 		assertEquals(characteristic, foodMessage.getMissCharacteristic(bolo, banana));
 	}
+	
+	@Test
+	public void shouldHaveProperPlayAgain() {
+		FoodMessage foodMessage = new FoodMessage();
+		String messsage = "Jogar novamente?";
+		
+		assertEquals(messsage, foodMessage.getPlayAgain());
+	}
 }

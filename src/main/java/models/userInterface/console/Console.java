@@ -13,18 +13,16 @@ public class Console implements UserInterface {
 	}
 
 	@Override
-	public String read() {
+	public String read(String message) {
+		this.print(message);
 		Scanner scanner = new Scanner(System.in);
-		String message = scanner.nextLine();
-
-		return message;
+		return scanner.nextLine();
 	}
 
 	@Override
 	public boolean validate(String message) {
-		this.print(message);
-		String result = this.read();
-		
+		String result = this.read(message);
+
 		return "S".equals(result);
 	}
 

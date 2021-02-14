@@ -2,7 +2,7 @@ package models.userInterface;
 
 public interface UserInterface {
 	
-	public abstract String read();
+	public abstract String read(String messaage);
 	
 	public abstract void print(String message);
 

@@ -6,6 +6,7 @@ import models.message.FoodMessage;
 import models.message.Message;
 import models.userInterface.UserInterface;
 import models.userInterface.console.Console;
+import models.userInterface.swing.Swing;
 
 public class Game {
 	private Message message;
@@ -27,6 +28,17 @@ public class Game {
 		root.setLeft(leftNode);
 
 		return new Game(new FoodMessage(), new Console(), root);
+	}
+
+	public static Game buildSwingFoodGame() {
+		Guess cake = new Guess("bolo de chocolate", "feito de chocolate");
+		Guess lasagna = new Guess("lasanha", "massa");
+
+		Node<Guess> root = new Node<>(lasagna);
+		Node<Guess> leftNode = new Node<>(cake);
+		root.setLeft(leftNode);
+
+		return new Game(new FoodMessage(), new Swing(), root);
 	}
 
 	public Node<Guess> getRoot() {
@@ -81,12 +93,11 @@ public class Game {
 	private Node<Guess> askAwnser(Node<Guess> node) {
 		Guess userGuess = new Guess();
 
-		this.userInterface.print(this.message.getMissName());
-		String name = this.userInterface.read();
+		String name = this.userInterface.read(this.message.getMissName());
 		userGuess.setName(name);
 
-		this.userInterface.print(this.message.getMissCharacteristic(userGuess, node.getValue()));
-		String characteristic = this.userInterface.read();
+		String missCharachteristic = this.message.getMissCharacteristic(userGuess, node.getValue());
+		String characteristic = this.userInterface.read(missCharachteristic);
 		userGuess.setCharachteristic(characteristic);
 
 		Node<Guess> userNode = new Node<>(userGuess);

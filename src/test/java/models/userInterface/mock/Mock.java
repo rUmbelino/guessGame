@@ -12,7 +12,7 @@ public class Mock implements UserInterface {
 	}
 
 	@Override
-	public String read() {
+	public String read(String message) {
 		return null;
 	}
 

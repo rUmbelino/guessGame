@@ -74,4 +74,15 @@ public class GameTest {
 		assertNotNull(rootNode.getLeft());
 		assertEquals(rootNode.getRight(), null);
 	}
+	
+	@Test
+	public void shouldProperlyBuildSwingGame() {
+		Game game = Game.buildSwingFoodGame();
+		
+		Node<Guess> rootNode = game.getRoot();
+		
+		assertNotNull(rootNode.getValue());
+		assertNotNull(rootNode.getLeft());
+		assertEquals(rootNode.getRight(), null);
+	}
 }

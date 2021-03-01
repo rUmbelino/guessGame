@@ -21,6 +21,7 @@ public abstract class GuessDecisionTree extends DecisionTree<Guess> {
 
 	public abstract String getUserGuessCharacteristic(Guess lastGuess, Guess userGuess);
 
+	@Override
 	public Direction assertDirection(Guess value) {
 		if (!this.validateHunchCharacteristic(value)) {
 			return Direction.LEFT;
@@ -34,6 +35,7 @@ public abstract class GuessDecisionTree extends DecisionTree<Guess> {
 		return Direction.RIGHT;
 	}
 
+	@Override
 	public Guess generateUserValue(Guess lastGuess) {
 		String name = this.getUserGuessName();
 		Guess userGuess = new Guess();

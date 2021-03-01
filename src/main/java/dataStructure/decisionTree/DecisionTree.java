@@ -9,6 +9,10 @@ public abstract class DecisionTree<T> {
 		this.setRoot(root);
 	}
 
+	public abstract Direction assertDirection(T value);
+
+	public abstract T generateUserValue(T lastValue);
+
 	public Node<T> getRoot() {
 		return root;
 	}
@@ -16,8 +20,6 @@ public abstract class DecisionTree<T> {
 	public void setRoot(Node<T> root) {
 		this.root = root;
 	}
-
-	public abstract Direction assertDirection(T value);
 
 	public void findNodeByAssertDirection() {
 		this.findNode(this.root);
@@ -54,8 +56,6 @@ public abstract class DecisionTree<T> {
 		Node<T> userNode = new Node<T>(userValue);
 		this.setNodeAtDirection(lastNode, userNode, lastDirection);
 	}
-
-	public abstract T generateUserValue(T lastValue);
 
 	private void setNodeAtDirection(Node<T> lastNode, Node<T> userNode, Direction direction) {
 		if (Direction.isRightDirection(direction)) {

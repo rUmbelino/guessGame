@@ -11,6 +11,16 @@ public abstract class GuessDecisionTree extends DecisionTree<Guess> {
 		super(root);
 	}
 
+	public abstract boolean validateHunchCharacteristic(Guess value);
+
+	public abstract boolean validateHunchName(Guess value);
+
+	public abstract void showWinMessage();
+
+	public abstract String getUserGuessName();
+
+	public abstract String getUserGuessCharacteristic(Guess lastGuess, Guess userGuess);
+
 	public Direction assertDirection(Guess value) {
 		if (!this.validateHunchCharacteristic(value)) {
 			return Direction.LEFT;
@@ -24,25 +34,15 @@ public abstract class GuessDecisionTree extends DecisionTree<Guess> {
 		return Direction.RIGHT;
 	}
 
-	public abstract boolean validateHunchCharacteristic(Guess value);
-
-	public abstract boolean validateHunchName(Guess value);
-
-	public abstract void showWinMessage();
-
 	public Guess generateUserValue(Guess lastGuess) {
 		String name = this.getUserGuessName();
 		Guess userGuess = new Guess();
 		userGuess.setName(name);
-		
+
 		String characteristic = this.getUserGuessCharacteristic(lastGuess, userGuess);
 		userGuess.setCharachteristic(characteristic);
 
 		return userGuess;
 	}
-
-	public abstract String getUserGuessName();
-
-	public abstract String getUserGuessCharacteristic(Guess lastGuess, Guess userGuess);
 
 }

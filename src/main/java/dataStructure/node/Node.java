@@ -1,4 +1,4 @@
-package models.dataStructure;
+package dataStructure.node;
 
 public class Node<E> {
 	private E value;
@@ -13,6 +13,10 @@ public class Node<E> {
 
 	public E getValue() {
 		return value;
+	}
+
+	public void setValue(E value) {
+		this.value = value;
 	}
 
 	public Node<E> getLeft() {

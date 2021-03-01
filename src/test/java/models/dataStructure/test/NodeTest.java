@@ -3,6 +3,8 @@ package models.dataStructure.test;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import dataStructure.node.Node;
 import models.dataStructure.*;
 
 public class NodeTest {

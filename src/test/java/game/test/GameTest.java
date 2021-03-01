@@ -8,8 +8,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import dataStructure.node.Node;
 import game.Game;
-import models.dataStructure.Node;
 import models.game.Guess;
 import models.message.FoodMessage;
 import models.userInterface.mock.Mock;
@@ -39,8 +39,8 @@ public class GameTest {
 	@Test
 	public void shouldHaveACorrectMockGameWithouInserting() {
 		Map<String, Boolean> validateAwnsers = new HashMap<>();
-		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
-		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), true);
+		validateAwnsers.put(this.foodMessage.getHunchCharacteristic(this.lasagna), true);
+		validateAwnsers.put(this.foodMessage.getHunchName(this.lasagna), true);
 
 		Game game = this.buildMockGame(validateAwnsers);
 
@@ -56,12 +56,12 @@ public class GameTest {
 	@Test
 	public void shouldHaveACorrectMockGameInsertingInRight() {
 		Map<String, Boolean> validateAwnsers = new HashMap<>();
-		validateAwnsers.put(this.foodMessage.getHunch(this.lasagna), true);
-		validateAwnsers.put(this.foodMessage.getGuess(this.lasagna), false);
+		validateAwnsers.put(this.foodMessage.getHunchCharacteristic(this.lasagna), true);
+		validateAwnsers.put(this.foodMessage.getHunchName(this.lasagna), false);
 
 		Map<String, String> readAwnsers = new HashMap<>();
-		readAwnsers.put(this.foodMessage.getMissName(), this.pizza.getName());
-		readAwnsers.put(this.foodMessage.getMissCharacteristic(this.pizza, this.lasagna),
+		readAwnsers.put(this.foodMessage.getRegisterGuessName(), this.pizza.getName());
+		readAwnsers.put(this.foodMessage.getRegisterGuessCharacteristic(this.pizza, this.lasagna),
 				this.pizza.getCharachteristic());
 
 		Game game = this.buildMockGame(validateAwnsers, readAwnsers);
@@ -70,10 +70,9 @@ public class GameTest {
 
 		Node<Guess> rootNode = game.getRoot();
 
-		Guess inserted =rootNode.getRight().getValue();
-		
+		Guess inserted = rootNode.getRight().getValue();
+
 		assertEquals(inserted.getName(), this.pizza.getName());
-		assertEquals(inserted.getCharachteristic(), this.pizza.getCharachteristic());
 	}
 
 	@Test

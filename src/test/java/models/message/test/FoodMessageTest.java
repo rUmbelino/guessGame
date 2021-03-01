@@ -13,7 +13,7 @@ public class FoodMessageTest {
 		FoodMessage foodMessage = new FoodMessage();
 		String greeting = "Pense em um prato que gosta";
 
-		assertEquals(greeting, foodMessage.getGreeting());
+		assertEquals(greeting, foodMessage.getInstructions());
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class FoodMessageTest {
 		Guess bolo = new Guess("bolo", "chocolate");
 		String hunch = String.format("O prato que pensou é %s?", bolo.getCharachteristic());
 
-		assertEquals(hunch, foodMessage.getHunch(bolo));
+		assertEquals(hunch, foodMessage.getHunchCharacteristic(bolo));
 	}
 	
 	@Test
@@ -31,7 +31,7 @@ public class FoodMessageTest {
 		Guess bolo = new Guess("bolo", "chocolate");
 		String guess = String.format("O prato que pensou é %s?", bolo.getName());
 		
-		assertEquals(guess, foodMessage.getGuess(bolo));
+		assertEquals(guess, foodMessage.getHunchName(bolo));
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class FoodMessageTest {
 		FoodMessage foodMessage = new FoodMessage();
 		String hit = "Acertei denovo";
 		
-		assertEquals(hit, foodMessage.getHit());
+		assertEquals(hit, foodMessage.getWinMessage());
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class FoodMessageTest {
 		FoodMessage foodMessage = new FoodMessage();
 		String missName = "Qual o prato que pensou?";
 		
-		assertEquals(missName, foodMessage.getMissName());
+		assertEquals(missName, foodMessage.getRegisterGuessName());
 	}
 	
 	@Test
@@ -56,8 +56,8 @@ public class FoodMessageTest {
 		Guess bolo = new Guess("bolo", "chocolate");
 		Guess banana = new Guess("banana", "fruta");
 		
-		String characteristic = "bolo é ____ mas banana não.";
+		String characteristic = "banana é ____ mas bolo não.";
 		
-		assertEquals(characteristic, foodMessage.getMissCharacteristic(bolo, banana));
+		assertEquals(characteristic, foodMessage.getRegisterGuessCharacteristic(bolo, banana));
 	}
 }

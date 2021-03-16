@@ -1,6 +1,6 @@
-package dataStructure.decisionTree;
+package com.rumbelino.dataStructure.decisionTree;
 
-import dataStructure.node.Node;
+import com.rumbelino.dataStructure.node.Node;
 
 public abstract class DecisionTree<T> {
 	private Node<T> root;

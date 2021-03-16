@@ -8,10 +8,11 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import dataStructure.node.Node;
-import game.Game;
-import models.game.Guess;
-import models.message.FoodMessage;
+import com.rumbelino.dataStructure.node.Node;
+import com.rumbelino.game.Game;
+import com.rumbelino.models.game.Guess;
+import com.rumbelino.models.message.FoodMessage;
+
 import models.userInterface.mock.Mock;
 
 public class GameTest {

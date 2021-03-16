@@ -1,6 +1,6 @@
-package models.message;
+package com.rumbelino.models.message;
 
-import models.game.Guess;
+import com.rumbelino.models.game.Guess;
 
 public class FoodMessage implements Message{
 

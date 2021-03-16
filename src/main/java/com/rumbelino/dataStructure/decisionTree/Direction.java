@@ -1,4 +1,4 @@
-package dataStructure.decisionTree;
+package com.rumbelino.dataStructure.decisionTree;
 
 public enum Direction {
 	LEFT, RIGHT, STOP;

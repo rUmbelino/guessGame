@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import models.game.Guess;
+import com.rumbelino.models.game.Guess;
 
 public class GuessTest {
 	@Test

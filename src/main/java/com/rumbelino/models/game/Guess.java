@@ -1,4 +1,4 @@
-package models.game;
+package com.rumbelino.models.game;
 
 public class Guess {
 

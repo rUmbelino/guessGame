@@ -1,9 +1,9 @@
-package dataStructure.decisionTree.guess;
+package com.rumbelino.dataStructure.decisionTree.guess;
 
-import dataStructure.decisionTree.DecisionTree;
-import dataStructure.decisionTree.Direction;
-import dataStructure.node.Node;
-import models.game.Guess;
+import com.rumbelino.dataStructure.decisionTree.DecisionTree;
+import com.rumbelino.dataStructure.decisionTree.Direction;
+import com.rumbelino.dataStructure.node.Node;
+import com.rumbelino.models.game.Guess;
 
 public abstract class GuessDecisionTree extends DecisionTree<Guess> {
 

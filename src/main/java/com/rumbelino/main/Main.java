@@ -1,6 +1,6 @@
-package main;
+package com.rumbelino.main;
 
-import game.Game;
+import com.rumbelino.game.Game;
 
 public class Main {
 

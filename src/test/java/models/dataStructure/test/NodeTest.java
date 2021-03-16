@@ -4,7 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import dataStructure.node.Node;
+import com.rumbelino.dataStructure.node.Node;
+
 import models.dataStructure.*;
 
 public class NodeTest {

@@ -1,8 +1,8 @@
-package models.userInterface.console;
+package com.rumbelino.models.userInterface.console;
 
 import java.util.Scanner;
 
-import models.userInterface.UserInterface;
+import com.rumbelino.models.userInterface.UserInterface;
 
 public class Console implements UserInterface {
 

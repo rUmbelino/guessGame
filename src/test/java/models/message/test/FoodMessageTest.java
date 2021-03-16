@@ -3,8 +3,8 @@ package models.message.test;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import models.game.Guess;
-import models.message.FoodMessage;
+import com.rumbelino.models.game.Guess;
+import com.rumbelino.models.message.FoodMessage;
 
 public class FoodMessageTest {
 

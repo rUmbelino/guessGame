@@ -1,13 +1,13 @@
-package game;
+package com.rumbelino.game;
 
-import dataStructure.decisionTree.guess.GuessDecisionTree;
-import dataStructure.node.Node;
-import models.game.Guess;
-import models.message.FoodMessage;
-import models.message.Message;
-import models.userInterface.UserInterface;
-import models.userInterface.console.Console;
-import models.userInterface.swing.Swing;
+import com.rumbelino.dataStructure.decisionTree.guess.GuessDecisionTree;
+import com.rumbelino.dataStructure.node.Node;
+import com.rumbelino.models.game.Guess;
+import com.rumbelino.models.message.FoodMessage;
+import com.rumbelino.models.message.Message;
+import com.rumbelino.models.userInterface.UserInterface;
+import com.rumbelino.models.userInterface.console.Console;
+import com.rumbelino.models.userInterface.swing.Swing;
 
 public class Game extends GuessDecisionTree {
 	private Message message;

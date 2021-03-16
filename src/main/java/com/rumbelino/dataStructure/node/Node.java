@@ -1,4 +1,4 @@
-package dataStructure.node;
+package com.rumbelino.dataStructure.node;
 
 public class Node<E> {
 	private E value;

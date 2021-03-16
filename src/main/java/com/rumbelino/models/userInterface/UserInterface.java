@@ -1,4 +1,4 @@
-package models.userInterface;
+package com.rumbelino.models.userInterface;
 
 public interface UserInterface {
 	

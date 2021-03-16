@@ -2,7 +2,7 @@ package models.userInterface.mock;
 
 import java.util.Map;
 
-import models.userInterface.UserInterface;
+import com.rumbelino.models.userInterface.UserInterface;
 
 public class Mock implements UserInterface {
 	Map<String, Boolean> validateAwnsers;

@@ -1,9 +1,9 @@
-package models.userInterface.swing;
+package com.rumbelino.models.userInterface.swing;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import models.userInterface.UserInterface;
+import com.rumbelino.models.userInterface.UserInterface;
 
 public class Swing extends JFrame implements UserInterface {
 
